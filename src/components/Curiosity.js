@@ -2,13 +2,15 @@
 
 import React, {Component} from 'react'
 import {Image} from 'react-native'
+import asap from 'asap'
 
 import TabBarItem from './TabBarItem'
 import {photosActions} from '../actions'
 
 type Props = {
   selected: boolean,
-  photos: Array<any>
+  photos: Array<any>,
+  onPress: Function
 }
 
 export default class  Curiosity extends Component {
@@ -17,7 +19,11 @@ export default class  Curiosity extends Component {
   constructor (props: Props) {
     super(props)
 
-    setTimeout(() => photosActions.getPhotos('curiosity'), 100)
+    asap(() => photosActions.getPhotos('curiosity'))
+  }
+
+  onPress = () => {
+    this.props.onPress('curiosity')
   }
 
   render () {
@@ -25,13 +31,8 @@ export default class  Curiosity extends Component {
       <TabBarItem
         {...this.props}
         title="Curiosity"
-      >
-        {this.props.photos.map((photo, i) => {
-          return (
-            <Image key={i} source={{uri: photo.img_src}} style={{width: 400, height: 400}} />
-          )
-        })}
-      </TabBarItem>
+        onPress={this.onPress}
+      />
     )
   }
 }

@@ -44,6 +44,11 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>mars.nasa.gov</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>mars.jpl.nasa.gov</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>

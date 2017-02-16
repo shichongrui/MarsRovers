@@ -1,12 +1,12 @@
 /* @flow */
 
 import React, {Component} from 'react'
-import {TabBarIOS, ScrollView, StyleSheet} from 'react-native'
+import {TabBarIOS, ScrollView, StyleSheet, Image} from 'react-native'
 
 type Props = {
   selected: boolean,
   title: string,
-  children?: Element<*>
+  photos: Array<any>
 }
 
 export default class TabBarItem extends Component {
@@ -19,7 +19,11 @@ export default class TabBarItem extends Component {
         style={styles.item}
       >
         <ScrollView>
-          {this.props.children}
+          {this.props.photos.map((photo, i) => {
+            return (
+              <Image key={i} source={{uri: photo.img_src}} style={{width: 400, height: 400}} />
+            )
+          })}
         </ScrollView>
       </TabBarIOS.Item>
     )

@@ -2,24 +2,37 @@
 
 import React, {Component} from 'react'
 import {Text} from 'react-native'
+import asap from 'asap'
 
 import TabBarItem from './TabBarItem'
+import {photosActions} from '../actions'
 
 type Props = {
-  selected: boolean
+  selected: boolean,
+  photos: Array<any>,
+  onPress: Function
 }
 
-export default class  Curiosity extends Component {
+export default class Spirit extends Component {
   props: Props
+
+  constructor (props: Props) {
+    super(props)
+
+    asap(() => photosActions.getPhotos('spirit'))
+  }
+
+  onPress = () => {
+    this.props.onPress('spirit')
+  }
 
   render () {
     return (
       <TabBarItem
         {...this.props}
         title="Spirit"
-      >
-        <Text>Spirit</Text>
-      </TabBarItem>
+        onPress={this.onPress}
+      />
     )
   }
 }

@@ -24,7 +24,10 @@ class AppWrapper extends Component {
   render () {
     let state = store.getState()
     return (
-      <App activeTab={state.navigation.activeTab} photos={state.photos} />
+      <App 
+        activeTab={state.navigation.activeTab}
+        photos={state.photos}
+      />
     )
   }
 }
