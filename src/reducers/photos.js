@@ -23,11 +23,14 @@ export default function photosReducer (state: any = initialState, action: any) {
         photosError: null
       }
     case PHOTO_REQUEST_SUCCESSFUL:
+      let nextPhotos = state[action.rover].slice()
+      nextPhotos.push(...action.photos)
       return {
         ...state,
         photosPending: false,
         photosSuccessful: true,
-        [action.rover]: action.photos.photos
+        [action.rover]: nextPhotos,
+        nextSol: action.nextSol
       }
     case PHOTO_REQUEST_FAILED:
       return {

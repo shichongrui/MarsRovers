@@ -1,7 +1,6 @@
 /* @flow */
 
 import React, {Component} from 'react'
-import {Text} from 'react-native'
 import asap from 'asap'
 
 import TabBarItem from './TabBarItem'
@@ -10,12 +9,13 @@ import {photosActions} from '../actions'
 type Props = {
   selected: boolean,
   photos: Array<any>,
-  onPress: Function
+  onPress: Function,
+  photosLoading: boolean,
+  nextSol: number
 }
 
 export default class Opportunity extends Component {
   props: Props
-
 
   constructor (props: Props) {
     super(props)
@@ -27,12 +27,17 @@ export default class Opportunity extends Component {
     this.props.onPress('opportunity')
   }
 
+  getNextSet = () => {
+    photosActions.getPhotos('spirit', this.props.nextSol)
+  }
+
   render () {
     return (
       <TabBarItem
         {...this.props}
-        title="Opportunity"
+        title='Opportunity'
         onPress={this.onPress}
+        onEndReached={this.getNextSet}
       />
     )
   }

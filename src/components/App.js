@@ -12,28 +12,36 @@ import Spirit from './Spirit'
 import {navigationActions} from '../actions'
 
 type Props = {
-  photos: any
+  photos: any,
+  activeTab: roverTypes
 }
 
 export default class App extends Component {
+  props: Props
 
   render () {
     return (
       <TabBarIOS>
-        <Curiosity 
+        <Curiosity
           selected={this.props.activeTab === 'curiosity'}
           photos={this.props.photos.curiosity}
+          photosLoading={this.props.photos.photosPending}
           onPress={navigationActions.changeTab}
+          nextSol={this.props.photos.nextSol}
         />
-        <Opportunity 
+        <Opportunity
           selected={this.props.activeTab === 'opportunity'}
           photos={this.props.photos.opportunity}
+          photosLoading={this.props.photos.photosPending}
           onPress={navigationActions.changeTab}
+          nextSol={this.props.photos.nextSol}
         />
-        <Spirit 
+        <Spirit
           selected={this.props.activeTab === 'spirit'}
           photos={this.props.photos.spirit}
+          photosLoading={this.props.photos.photosPending}
           onPress={navigationActions.changeTab}
+          nextSol={this.props.photos.nextSol}
         />
       </TabBarIOS>
     )

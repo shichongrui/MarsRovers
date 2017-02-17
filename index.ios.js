@@ -6,9 +6,7 @@
 
 import React, { Component } from 'react'
 import {
-  AppRegistry,
-  View,
-  Text
+  AppRegistry
 } from 'react-native'
 
 import App from './src/components/App'
@@ -24,7 +22,7 @@ class AppWrapper extends Component {
   render () {
     let state = store.getState()
     return (
-      <App 
+      <App
         activeTab={state.navigation.activeTab}
         photos={state.photos}
       />
