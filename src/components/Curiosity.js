@@ -28,7 +28,7 @@ export default class Curiosity extends Component {
   }
 
   getNextSet = () => {
-    photosActions.getPhotos('spirit', this.props.nextSol)
+    photosActions.getPhotos('curiosity', this.props.nextSol)
   }
 
   render () {

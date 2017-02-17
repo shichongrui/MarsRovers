@@ -28,7 +28,7 @@ export default class Opportunity extends Component {
   }
 
   getNextSet = () => {
-    photosActions.getPhotos('spirit', this.props.nextSol)
+    photosActions.getPhotos('opportunity', this.props.nextSol)
   }
 
   render () {
