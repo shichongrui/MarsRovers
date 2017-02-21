@@ -8,24 +8,17 @@ import React, { Component } from 'react'
 import {
   AppRegistry
 } from 'react-native'
+import {Provider} from 'react-redux'
 
 import App from './src/components/App'
 import store from './src/store'
 
 class AppWrapper extends Component {
-  constructor () {
-    super()
-
-    store.subscribe(() => this.forceUpdate())
-  }
-
   render () {
-    let state = store.getState()
     return (
-      <App
-        activeTab={state.navigation.activeTab}
-        photos={state.photos}
-      />
+      <Provider store={store}>
+        <App />
+      </Provider>
     )
   }
 }

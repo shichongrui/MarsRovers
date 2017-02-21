@@ -2,9 +2,10 @@
 
 import React, {Component} from 'react'
 import asap from 'asap'
+import {connect} from 'react-redux'
 
 import TabBarItem from './TabBarItem'
-import {photosActions} from '../actions'
+import {photosActions, navigationActions} from '../actions'
 
 type Props = {
   selected: boolean,
@@ -14,7 +15,7 @@ type Props = {
   nextSol: number
 }
 
-export default class Curiosity extends Component {
+export class Curiosity extends Component {
   props: Props
 
   constructor (props: Props) {
@@ -42,3 +43,19 @@ export default class Curiosity extends Component {
     )
   }
 }
+
+export default connect(
+  (state) => {
+    return {
+      selected: state.navigation.activeTab === 'curiosity',
+      photos: state.photos.curiosity,
+      photosLoading: state.photos.photosPending,
+      nextSol: state.photos.curiosityNextSol
+    }
+  },
+  () => {
+    return {
+      onPress: navigationActions.changeTab
+    }
+  }
+)(Curiosity)

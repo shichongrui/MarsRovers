@@ -6,7 +6,7 @@ export async function getItem (key: string): Promise<any> {
   return JSON.parse(cachedValue)
 }
 
-export function setItem (key: string, value: any): Promise {
+export function setItem (key: string, value: any): Promise<any> {
   return AsyncStorage.setItem(key, JSON.stringify(value))
 }
 
