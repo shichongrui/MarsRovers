@@ -13,8 +13,7 @@ import {navigationActions} from '../actions'
 
 type Props = {
   photos: any,
-  activeTab: roverTypes,
-  foo: string
+  activeTab: roverTypes
 }
 
 export default class App extends Component {
